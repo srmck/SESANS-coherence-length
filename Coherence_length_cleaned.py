@@ -172,279 +172,185 @@ def calcAveragePol(rnums):
 #======================================================================================
 #Grating 27: Lines vertical (90 degree orientation) at 2MHz and -40deg
 #======================================================================================
-binning_2MHz_90deg='3.0,0.05,12.5'
-reduceSESANS2MHz(72623,72624,-40,True,binning_2MHz_90deg)
-reduceSESANS2MHz(72625,72626,-40,True,binning_2MHz_90deg)
-reduceSESANS2MHz(72627,72628,-40,True,binning_2MHz_90deg)
-reduceSESANS2MHz(72632,72633,-40,True,binning_2MHz_90deg)
-reduceSESANS2MHz(72634,72635,-40,True,binning_2MHz_90deg)
-reduceSESANS2MHz(72636,72637,-40,True,binning_2MHz_90deg)
-reduceSESANS2MHz(72639,72640,-40,True,binning_2MHz_90deg)
-reduceSESANS2MHz(72641,72642,-40,True,binning_2MHz_90deg)
-reduceSESANS2MHz(72643,72644,-40,True,binning_2MHz_90deg)
-reduceSESANS2MHz(72646,72647,-40,True,binning_2MHz_90deg)
-reduceSESANS2MHz(72648,72649,-40,True,binning_2MHz_90deg)
-reduceSESANS2MHz(72650,72651,-40,True,binning_2MHz_90deg)
-reduceSESANS2MHz(72653,72654,-40,True,binning_2MHz_90deg)
+binning_2MHz_90deg='3.0,0.05,12.5' #original binning
 
-sruns=[72624,72626,72628,72633,72635,72637,72640,72642,72644,72647,72649,72651,72654]
-calcAverage(sruns)
-RenameWorkspace('waverage','pols_2Mhz_90deg')
-SaveAscii('pols_2Mhz_90deg',\
-'C:\\Users\\xsm\\Documents\\Mantid data\\LARMOR Coherence Feb 2023\\Processed data\\pols_2Mhz_90deg.dat')
+empties = [72623,72625,72627,72632,72634,72636,72639,72641,72643,72646,72648,72650,72653,72655]
+samples = [e+1 for e in empties]
+for r in empties:
+    reduceSESANS2MHz(r,r+1,-40,True,binning=binning_2MHz_90deg)
+calcAverage(samples)
+data_name = 'pols_2Mhz_90deg'+str(binning_2MHz_90deg).replace(',','_')
+RenameWorkspace('waverage',data_name)
+SaveAscii(data_name,\
+'C:\\Users\\xsm\\Documents\\\GitHub\\SESANS-coherence-length\\Processed data\\'+data_name+'.dat')
 
+binning_2MHz_90deg_2='3.0,0.05,13.5'
+
+empties = [72623,72625,72627,72632,72634,72636,72639,72641,72643,72646,72648,72650,72653,72655]
+samples = [e+1 for e in empties]
+for r in empties:
+    reduceSESANS2MHz(r,r+1,-40,True,binning=binning_2MHz_90deg_2)
+calcAverage(samples)
+data_name = 'pols_2Mhz_90deg'+str(binning_2MHz_90deg_2).replace(',','_')
+RenameWorkspace('waverage',data_name)
+SaveAscii(data_name,\
+'C:\\Users\\xsm\\Documents\\\GitHub\\SESANS-coherence-length\\Processed data\\'+data_name+'.dat')
+
+binning_2MHz_90deg_3='3.0,0.025,13.5'
+
+empties = [72623,72625,72627,72632,72634,72636,72639,72641,72643,72646,72648,72650,72653,72655]
+samples = [e+1 for e in empties]
+for r in empties:
+    reduceSESANS2MHz(r,r+1,-40,True,binning=binning_2MHz_90deg_3)
+calcAverage(samples)
+data_name = 'pols_2Mhz_90deg'+str(binning_2MHz_90deg_3).replace(',','_')
+RenameWorkspace('waverage',data_name)
+SaveAscii(data_name,\
+'C:\\Users\\xsm\\Documents\\\GitHub\\SESANS-coherence-length\\Processed data\\'+data_name+'.dat')
 #======================================================================================
 # Rotate Grating by 82deg so that the lines are at 8deg to the horizontal at 2MHz
 #======================================================================================
-# quick check run of 2uamps each
-binning1='3.0,0.05,12.5'
+binning_2MHz_8deg='3.0,0.05,12.5'
 
-reduceSESANS2MHz(72665,72666,-40,True,binning1)
-reduceSESANS2MHz(72667,72668,-40,True,binning1)
-reduceSESANS2MHz(72669,72670,-40,True,binning1)
-reduceSESANS2MHz(72672,72673,-40,True,binning1)
-reduceSESANS2MHz(72674,72675,-40,True,binning1)
-reduceSESANS2MHz(72674,72675,-40,True,binning1)
-reduceSESANS2MHz(72676,72677,-40,True,binning1)
-reduceSESANS2MHz(72679,72680,-40,True,binning1)
-reduceSESANS2MHz(72681,72682,-40,True,binning1)
-reduceSESANS2MHz(72683,72684,-40,True,binning1)
-reduceSESANS2MHz(72686,72687,-40,True,binning1)
-reduceSESANS2MHz(72688,72689,-40,True,binning1)
-reduceSESANS2MHz(72690,72691,-40,True,binning1)
-reduceSESANS2MHz(72693,72694,-40,True,binning1)
-reduceSESANS2MHz(72695,72696,-40,True,binning1)
-reduceSESANS2MHz(72697,72698,-40,True,binning1)
-reduceSESANS2MHz(72700,72701,-40,True,binning1)
-reduceSESANS2MHz(72702,72703,-40,True,binning1)
+empties = [72665,72667,72669,72672,72674,72676,72679,72681,72683,72686,72688,72690,72693,72695,72697,72700,72702]
+samples = [e+1 for e in empties]
+for r in empties:
+    reduceSESANS2MHz(r,r+1,-40,True,binning=binning_2MHz_8deg)
+calcAverage(samples)
+data_name = 'pols_2Mhz_8deg'+str(binning_2MHz_8deg).replace(',','_')
+RenameWorkspace('waverage',data_name)
+SaveAscii(data_name,\
+'C:\\Users\\xsm\\Documents\\\GitHub\\SESANS-coherence-length\\Processed data\\'+data_name+'.dat')
 
+binning_2MHz_8deg_2='3.0,0.025,13.5'
 
+empties = [72665,72667,72669,72672,72674,72676,72679,72681,72683,72686,72688,72690,72693,72695,72697,72700,72702]
+samples = [e+1 for e in empties]
+for r in empties:
+    reduceSESANS2MHz(r,r+1,-40,True,binning=binning_2MHz_8deg_2)
+calcAverage(samples)
+data_name = 'pols_2Mhz_8deg'+str(binning_2MHz_8deg_2).replace(',','_')
+RenameWorkspace('waverage',data_name)
+SaveAscii(data_name,\
+'C:\\Users\\xsm\\Documents\\\GitHub\\SESANS-coherence-length\\Processed data\\'+data_name+'.dat')
 
-sruns=[72666,72668,72670,72673,72675,72677,72680,72682,72684,72687,72689,72691,72694,72696,72698,72701,72703]
-calcAverage(sruns)
-RenameWorkspace('waverage','waverage8deg')
+binning_2MHz_8deg_3='3.0,0.05,13.5'
 
-base_2mhz=mtd['waverage8deg']*1.0
-xvals=base_2mhz.dataX(0)
-for i in range(len(xvals)-1):
-    x1=0.5*(xvals[i]+xvals[i+1])
-    base_2mhz.dataY(0)[i]=0.33+0.67*np.cos(0.57*np.sqrt(x1/1000.0))
-    base_2mhz.dataE(0)[i]=0.0
-
-base_2mhz_alter=mtd['waverage8deg']*1.0
-xvals=base_2mhz_alter.dataX(0)
-for i in range(len(xvals)-1):
-    x1=0.5*(xvals[i]+xvals[i+1])
-    base_2mhz_alter.dataY(0)[i]=0.35+0.65*np.cos(0.57*np.sqrt(x1/1000.0))
-    base_2mhz_alter.dataE(0)[i]=0.0
-
-
-
-
-
-#waverage8deg_bkgd=mtd['waverage8deg']-wbase8deg
-
-
-# New function after Sam's fit
-wbase8deg_new=mtd['waverage8deg']*1.0
-
-xvals=wbase8deg_new.dataX(0)
-for i in range(len(xvals)-1):
-    x1=0.5*(xvals[i]+xvals[i+1])
-    wbase8deg_new.dataY(0)[i]=0.33+0.67*np.cos(0.57*np.sqrt(x1/1000.0))
-    wbase8deg_new.dataE(0)[i]=0.0
-waverage8deg_bkgd_new=mtd['waverage8deg']-wbase8deg_new
+empties = [72665,72667,72669,72672,72674,72676,72679,72681,72683,72686,72688,72690,72693,72695,72697,72700,72702]
+samples = [e+1 for e in empties]
+for r in empties:
+    reduceSESANS2MHz(r,r+1,-40,True,binning=binning_2MHz_8deg_3)
+calcAverage(samples)
+data_name = 'pols_2Mhz_8deg'+str(binning_2MHz_8deg_3).replace(',','_')
+RenameWorkspace('waverage',data_name)
+SaveAscii(data_name,\
+'C:\\Users\\xsm\\Documents\\\GitHub\\SESANS-coherence-length\\Processed data\\'+data_name+'.dat')
 
 #======================================================================================
-# Grating still at 8deg to the horizontal and moved to 3MHz
+# Grating still at 8deg to the horizontal; rf frequency increased to 3MHz
 #======================================================================================
-#Quick runs to check stability
-binning1='5.5,0.1,13.3'
+binning_3MHz_8deg='5.5,0.05,13.25'
 
-reduceSESANS3MHz(72707,72708,-40,True,binning1)
-reduceSESANS3MHz(72709,72708,-40,True,binning1)
+empties = [72716,72718,72720,72723,72725,72727,72730,72732,72734,72737,72739,72741,72744,72746,72748,72751]
+samples = [e+1 for e in empties]
+for r in empties:
+    reduceSESANS3MHz(r,r+1,-40,True,binning=binning_3MHz_8deg)
+calcAverage(samples)
+data_name = 'pols_3Mhz_8deg'+str(binning_3MHz_8deg).replace(',','_')
+RenameWorkspace('waverage',data_name)
+SaveAscii(data_name,\
+'C:\\Users\\xsm\\Documents\\\GitHub\\SESANS-coherence-length\\Processed data\\'+data_name+'.dat')
 
-quickpolAlanis(72712,binning1)
-quickpolAlanis(72713,binning1)
-quickpolAlanis(72714,binning1)
+binning_3MHz_8deg_2='5.5,0.075,13.25'
 
-# After waiting for 3MHz to stabilise
-reduceSESANS3MHz(72716,72717,-40,True,binning1)
-reduceSESANS3MHz(72718,72719,-40,True,binning1)
-reduceSESANS3MHz(72720,72721,-40,True,binning1)
+empties = [72716,72718,72720,72723,72725,72727,72730,72732,72734,72737,72739,72741,72744,72746,72748,72751]
+samples = [e+1 for e in empties]
+for r in empties:
+    reduceSESANS3MHz(r,r+1,-40,True,binning=binning_3MHz_8deg_2)
+calcAverage(samples)
+data_name = 'pols_3Mhz_8deg'+str(binning_3MHz_8deg_2).replace(',','_')
+RenameWorkspace('waverage',data_name)
+SaveAscii(data_name,\
+'C:\\Users\\xsm\\Documents\\\GitHub\\SESANS-coherence-length\\Processed data\\'+data_name+'.dat')
 
-reduceSESANS3MHz(72723,72724,-40,True,binning1)
-reduceSESANS3MHz(72725,72726,-40,True,binning1)
-reduceSESANS3MHz(72727,72728,-40,True,binning1)
-reduceSESANS3MHz(72730,72731,-40,True,binning1)
-reduceSESANS3MHz(72732,72733,-40,True,binning1)
-reduceSESANS3MHz(72734,72735,-40,True,binning1)
-reduceSESANS3MHz(72737,72738,-40,True,binning1)
-reduceSESANS3MHz(72739,72740,-40,True,binning1)
-reduceSESANS3MHz(72741,72742,-40,True,binning1)
-reduceSESANS3MHz(72744,72745,-40,True,binning1)
-reduceSESANS3MHz(72746,72747,-40,True,binning1)
-reduceSESANS3MHz(72748,72749,-40,True,binning1)
-reduceSESANS3MHz(72751,72752,-40,True,binning1)
+binning_3MHz_8deg_3='5.5,0.1,13.25'
 
-sruns=[72717,72719,72721,72724,72726,72728,72731,72733,72735,72738,72740,72742,72745,72747,72749,72752]
-calcAverage(sruns)
-RenameWorkspace('waverage','waverage8deg3mhz')
-
-#Create cos theta background for 3MHz data 
-base_3mhz=mtd['waverage8deg3mhz']*1.0
-
-xvals=base_3mhz.dataX(0)
-for i in range(len(xvals)-1):
-    x1=0.5*(xvals[i]+xvals[i+1])
-    base_3mhz.dataY(0)[i]=0.35+0.65*np.cos(0.57*np.sqrt(x1/1000.0*2/3))
-    base_3mhz.dataE(0)[i]=0.0
-
-base_3mhz_alter=mtd['waverage8deg3mhz']*1.0
-xvals=base_3mhz_alter.dataX(0)
-for i in range(len(xvals)-1):
-    x1=0.5*(xvals[i]+xvals[i+1])
-    base_3mhz_alter.dataY(0)[i]=0.33+0.67*np.cos(0.57*np.sqrt(x1/1000.0*2/3))
-    base_3mhz_alter.dataE(0)[i]=0.0
-Gr27_3mhz_8deg_bgnd_sub=mtd['waverage8deg3mhz']-base_3mhz_alter
-
-
-#waverage8deg3mhz_bkgd_sub=mtd['waverage8deg3mhz']-waverage8deg3mhz_bgnd
-
-
-#Write data to ascii
-SaveAscii('waverage8deg3mhz',r'U:\Users\Pynn\Feb_2023\GR27_8deg_3Mhz0p5_bin_bgnd_sub.txt')
-#SaveRKH('GR27_Average_0p05_bin',r'U:\Users\Pynn\Feb_2023\GR27_Average_0p5_bin.txt',Append=False)
+empties = [72716,72718,72720,72723,72725,72727,72730,72732,72734,72737,72739,72741,72744,72746,72748,72751]
+samples = [e+1 for e in empties]
+for r in empties:
+    reduceSESANS3MHz(r,r+1,-40,True,binning=binning_3MHz_8deg_3)
+calcAverage(samples)
+data_name = 'pols_3Mhz_8deg'+str(binning_3MHz_8deg_3).replace(',','_')
+RenameWorkspace('waverage',data_name)
+SaveAscii(data_name,\
+'C:\\Users\\xsm\\Documents\\\GitHub\\SESANS-coherence-length\\Processed data\\'+data_name+'.dat')
 
 #======================================================================================
-# Grating 27 at 5deg to the horizontal and moved to 3MHz
+# Grating 27 at 4p5deg to the horizontal; rf frequency at 3MHz
 #======================================================================================
-binning1='5.5,0.1,13.3'
+binning_3MHz_4p5deg='5.5,0.1,13.25'
 
-reduceSESANS3MHz(72754,72755,-40,True,binning1)
-sruns=[72755]
-calcAverage(sruns)
-RenameWorkspace('waverage','waverage5deg3mhz')
-#======================================================================================
-# Grating 27 at 4p5deg to the horizontal and moved to 3MHz
-#======================================================================================
-binning1='5.5,0.1,13.3'
+empties = [72761,72763,72765,72768,72770,72772,72775,72777,72779,72782,72784,72786,72789,72791,72793,72796,72798,72800,72803,72805,72807,72810,72812,72814,72817]
+samples = [e+1 for e in empties]
+for r in empties:
+    reduceSESANS3MHz(r,r+1,-40,True,binning=binning_3MHz_4p5deg)
+calcAverage(samples)
+data_name = 'pols_3Mhz_4p5deg'+str(binning_3MHz_4p5deg).replace(',','_')
+RenameWorkspace('waverage',data_name)
+SaveAscii(data_name,\
+'C:\\Users\\xsm\\Documents\\\GitHub\\SESANS-coherence-length\\Processed data\\'+data_name+'.dat')
 
-#quickpol(72795)
+binning_3MHz_4p5deg_2='5.5,0.05,13.25'
 
-reduceSESANS3MHz(72757,72758,-40,True,binning1) # Quick run   12 microamps
-
-reduceSESANS3MHz(72761,72762,-40,True,binning1)  # Long run 20 microamps
-reduceSESANS3MHz(72763,72764,-40,True,binning1)
-reduceSESANS3MHz(72765,72766,-40,True,binning1)
-reduceSESANS3MHz(72768,72769,-40,True,binning1)
-reduceSESANS3MHz(72770,72771,-40,True,binning1)
-reduceSESANS3MHz(72772,72773,-40,True,binning1)
-reduceSESANS3MHz(72775,72776,-40,True,binning1)
-reduceSESANS3MHz(72777,72778,-40,True,binning1)
-reduceSESANS3MHz(72779,72780,-40,True,binning1)
-reduceSESANS3MHz(72782,72783,-40,True,binning1)
-reduceSESANS3MHz(72784,72785,-40,True,binning1)
-reduceSESANS3MHz(72786,72787,-40,True,binning1)
-reduceSESANS3MHz(72789,72790,-40,True,binning1)
-reduceSESANS3MHz(72791,72792,-40,True,binning1)
-reduceSESANS3MHz(72793,72794,-40,True,binning1)
-reduceSESANS3MHz(72796,72797,-40,True,binning1)
-reduceSESANS3MHz(72798,72799,-40,True,binning1)
-reduceSESANS3MHz(72800,72801,-40,True,binning1)
-reduceSESANS3MHz(72803,72804,-40,True,binning1)
-reduceSESANS3MHz(72805,72806,-40,True,binning1)
-reduceSESANS3MHz(72807,72808,-40,True,binning1)
-reduceSESANS3MHz(72810,72811,-40,True,binning1)
-reduceSESANS3MHz(72812,72813,-40,True,binning1)
-reduceSESANS3MHz(72814,72815,-40,True,binning1)
-reduceSESANS3MHz(72817,72818,-40,True,binning1)
-
-sruns=[72762,72764,72766,72769,72771,72773,72776,72778,72780,72783,72785,72787,72790,72792,72794,72797,72799,72801,72804,72806,72808,72811,72813,72815,72818]
-calcAverage(sruns)
-RenameWorkspace('waverage','waverage4p5deg3mhz')
-
-SaveAscii('waverage4p5deg3mhz',r'U:\Users\Pynn\Feb_2023\waverage4p5deg3mhz.txt')
+empties = [72761,72763,72765,72768,72770,72772,72775,72777,72779,72782,72784,72786,72789,72791,72793,72796,72798,72800,72803,72805,72807,72810,72812,72814,72817]
+samples = [e+1 for e in empties]
+for r in empties:
+    reduceSESANS3MHz(r,r+1,-40,True,binning=binning_3MHz_4p5deg_2)
+calcAverage(samples)
+data_name = 'pols_3Mhz_4p5deg'+str(binning_3MHz_4p5deg_2).replace(',','_')
+RenameWorkspace('waverage',data_name)
+SaveAscii(data_name,\
+'C:\\Users\\xsm\\Documents\\\GitHub\\SESANS-coherence-length\\Processed data\\'+data_name+'.dat')
 
 #======================================================================================
-# Grating 27 at 90deg to the horizontal at 3MHz
+# Grating 27 at 90deg to the horizontal; rf frequency at 3MHz
 #======================================================================================
-binning1='5.5,0.05,13.3'
+binning_3MHz_90deg='5.5,0.05,13.25'
 
-#reduceSESANS3MHz(72820,72821,-40,True,binning1) # Quick run 2 microamps
+empties = [72823,72825,72827,72830,72832,72834,72837,72839,72841,72844,72846,72848,72851,72853,72855,72858,72860,72862,72865,72867,72869,72872,72874,72876,72879,72881,72883,72886,72888]
+samples = [e+1 for e in empties]
+for r in empties:
+    reduceSESANS3MHz(r,r+1,-40,True,binning=binning_3MHz_90deg)
+calcAverage(samples)
+data_name = 'pols_3Mhz_90deg'+str(binning_3MHz_90deg).replace(',','_')
+RenameWorkspace('waverage',data_name)
+SaveAscii(data_name,\
+'C:\\Users\\xsm\\Documents\\\GitHub\\SESANS-coherence-length\\Processed data\\'+data_name+'.dat')
 
-reduceSESANS3MHz(72823,72824,-40,True,binning1)  # Long run 20 microamps
-reduceSESANS3MHz(72825,72826,-40,True,binning1)
-reduceSESANS3MHz(72827,72828,-40,True,binning1)
-reduceSESANS3MHz(72830,72831,-40,True,binning1)
-reduceSESANS3MHz(72832,72833,-40,True,binning1)
-reduceSESANS3MHz(72834,72835,-40,True,binning1)
-reduceSESANS3MHz(72837,72838,-40,True,binning1)
-reduceSESANS3MHz(72839,72840,-40,True,binning1)
-reduceSESANS3MHz(72841,72842,-40,True,binning1)
-reduceSESANS3MHz(72844,72845,-40,True,binning1)
-reduceSESANS3MHz(72846,72847,-40,True,binning1)
-reduceSESANS3MHz(72848,72849,-40,True,binning1)
-reduceSESANS3MHz(72851,72852,-40,True,binning1)
-reduceSESANS3MHz(72853,72854,-40,True,binning1)
-reduceSESANS3MHz(72855,72856,-40,True,binning1)
-reduceSESANS3MHz(72858,72859,-40,True,binning1)
-reduceSESANS3MHz(72860,72861,-40,True,binning1)
-reduceSESANS3MHz(72862,72863,-40,True,binning1)
-reduceSESANS3MHz(72865,72866,-40,True,binning1)
-reduceSESANS3MHz(72867,72868,-40,True,binning1)
-reduceSESANS3MHz(72869,72870,-40,True,binning1)
-reduceSESANS3MHz(72872,72873,-40,True,binning1)
-reduceSESANS3MHz(72874,72875,-40,True,binning1)
-reduceSESANS3MHz(72876,72877,-40,True,binning1)
-reduceSESANS3MHz(72879,72880,-40,True,binning1)
-reduceSESANS3MHz(72881,72882,-40,True,binning1)
-reduceSESANS3MHz(72883,72884,-40,True,binning1)
-reduceSESANS3MHz(72886,72887,-40,True,binning1)
+binning_3MHz_90deg_1='5.5,0.1,13.25'
 
-sruns=[72824,72826,72828,72831,72833,72835,72838,72840,72842,72845,72847,72849,72852,72854,72856,72859,72861,\
-72863,72866,72868,72870,72873,72875,72877,72880,72882,72884,72887]
-calcAverage(sruns)
-RenameWorkspace('waverage','waverage90deg3mhz')
+empties = [72823,72825,72827,72830,72832,72834,72837,72839,72841,72844,72846,72848,72851,72853,72855,72858,72860,72862,72865,72867,72869,72872,72874,72876,72879,72881,72883,72886,72888]
+samples = [e+1 for e in empties]
+for r in empties:
+    reduceSESANS3MHz(r,r+1,-40,True,binning=binning_3MHz_90deg_1)
+calcAverage(samples)
+data_name = 'pols_3Mhz_90deg'+str(binning_3MHz_90deg_1).replace(',','_')
+RenameWorkspace('waverage',data_name)
+SaveAscii(data_name,\
+'C:\\Users\\xsm\\Documents\\\GitHub\\SESANS-coherence-length\\Processed data\\'+data_name+'.dat')
 
-SaveAscii('waverage90deg3mhz',r'U:\Users\Pynn\Feb_2023\waverage90deg3mhz.txt')
+binning_3MHz_90deg_3='5.5,0.025,13.25'
 
-binning1='5.5,0.025,13.3'
+empties = [72823,72825,72827,72830,72832,72834,72837,72839,72841,72844,72846,72848,72851,72853,72855,72858,72860,72862,72865,72867,72869,72872,72874,72876,72879,72881,72883,72886,72888]
+samples = [e+1 for e in empties]
+for r in empties:
+    reduceSESANS3MHz(r,r+1,-40,True,binning=binning_3MHz_90deg_3)
+calcAverage(samples)
+data_name = 'pols_3Mhz_90deg'+str(binning_3MHz_90deg_3).replace(',','_')
+RenameWorkspace('waverage',data_name)
+SaveAscii(data_name,\
+'C:\\Users\\xsm\\Documents\\\GitHub\\SESANS-coherence-length\\Processed data\\'+data_name+'.dat')
 
-#reduceSESANS3MHz(72820,72821,-40,True,binning1) # Quick run 2 microamps
 
-reduceSESANS3MHz(72823,72824,-40,True,binning1)  # Long run 20 microamps
-reduceSESANS3MHz(72825,72826,-40,True,binning1)
-reduceSESANS3MHz(72827,72828,-40,True,binning1)
-reduceSESANS3MHz(72830,72831,-40,True,binning1)
-reduceSESANS3MHz(72832,72833,-40,True,binning1)
-reduceSESANS3MHz(72834,72835,-40,True,binning1)
-reduceSESANS3MHz(72837,72838,-40,True,binning1)
-reduceSESANS3MHz(72839,72840,-40,True,binning1)
-reduceSESANS3MHz(72841,72842,-40,True,binning1)
-reduceSESANS3MHz(72844,72845,-40,True,binning1)
-reduceSESANS3MHz(72846,72847,-40,True,binning1)
-reduceSESANS3MHz(72848,72849,-40,True,binning1)
-reduceSESANS3MHz(72851,72852,-40,True,binning1)
-reduceSESANS3MHz(72853,72854,-40,True,binning1)
-reduceSESANS3MHz(72855,72856,-40,True,binning1)
-reduceSESANS3MHz(72858,72859,-40,True,binning1)
-reduceSESANS3MHz(72860,72861,-40,True,binning1)
-reduceSESANS3MHz(72862,72863,-40,True,binning1)
-reduceSESANS3MHz(72865,72866,-40,True,binning1)
-reduceSESANS3MHz(72867,72868,-40,True,binning1)
-reduceSESANS3MHz(72869,72870,-40,True,binning1)
-reduceSESANS3MHz(72872,72873,-40,True,binning1)
-reduceSESANS3MHz(72874,72875,-40,True,binning1)
-reduceSESANS3MHz(72876,72877,-40,True,binning1)
-reduceSESANS3MHz(72879,72880,-40,True,binning1)
-reduceSESANS3MHz(72881,72882,-40,True,binning1)
-reduceSESANS3MHz(72883,72884,-40,True,binning1)
-reduceSESANS3MHz(72886,72887,-40,True,binning1)
-
-sruns=[72824,72826,72828,72831,72833,72835,72838,72840,72842,72845,72847,72849,72852,72854,72856,72859,72861,\
-72863,72866,72868,72870,72873,72875,72877,72880,72882,72884,72887]
-calcAverage(sruns)
-RenameWorkspace('waverage','waverage90deg3mhz_0p025')
 
 
